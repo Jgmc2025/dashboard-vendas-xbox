@@ -1,45 +1,59 @@
-# 🎮 Dashboard de Vendas Xbox (Excel)
+# 🎮 Dashboard de Vendas · Xbox Game Pass Subscriptions (Excel)
 
-Dashboard interativo de vendas feito em Excel, transformando dados brutos em indicadores e gráficos para apoiar decisões.
+Dashboard interativo em Excel que transforma a base bruta de assinaturas do Xbox Game Pass em indicadores e gráficos para análise de desempenho de vendas.
 
 ## 📁 Conteúdo
-- `dashboard_vendas_xbox.xlsx` – arquivo final com o dashboard.
+- `dashboard_xbox_game_pass.xlsx` – arquivo final com o dashboard.
 - `README.md` – este documento.
+
+## 🗂️ Dados utilizados
+Base oficial do desafio (`base.xlsx`): **295 assinaturas** iniciadas entre **01/01/2024 e 16/12/2024**.
+
+| Coluna | Descrição |
+|---|---|
+| Subscriber ID / Name | Identificação do assinante |
+| Plan | Core (R$ 5), Standard (R$ 10) ou Ultimate (R$ 15) |
+| Start Date | Data de início |
+| Auto Renewal | Renovação automática (Yes/No) |
+| Subscription Type | Monthly, Quarterly ou Annual |
+| EA Play Season Pass (+ Price) | Adicional EA Play (R$ 30) |
+| Minecraft Season Pass (+ Price) | Adicional Minecraft (R$ 20) |
+| Coupon Value | Desconto aplicado |
+| Total Value | Plano + EA Play + Minecraft − Cupom |
 
 ## 📊 Estrutura do arquivo
 | Aba | Função |
 |---|---|
-| **Dashboard** | KPIs, filtros e gráficos |
-| **Base** | Dados brutos de vendas (tabela `tbVendas`) |
-| **Calc** | Tabelas auxiliares (SUMIFS) que alimentam KPIs e gráficos |
+| **Assets** | Paleta de cores e logos do projeto |
+| **Bases** | Base de dados (tabela `Tabela1`) + coluna auxiliar `Month` |
+| **Cálculos** | Perguntas de negócio respondidas com fórmulas |
+| **Dashboard** | Visualização final com filtros, KPIs e gráficos |
 
-### Indicadores (KPIs)
-Receita, Lucro, Margem, Pedidos, Unidades e Ticket Médio.
+## ❓ Perguntas de negócio respondidas
+1. Qual o faturamento total de planos anuais? → **R$ 1.754**
+2. Faturamento de planos anuais por auto renovação → **R$ 1.537** (com) / **R$ 217** (sem)
+3. Total de vendas do EA Play Season Pass → **R$ 2.940**
+4. Total de vendas do Minecraft Season Pass → **R$ 3.880**
+5. Como evolui a receita mês a mês?
+6. Qual plano gera mais receita? (Ultimate: R$ 5.388)
+7. Qual periodicidade vende mais? (Monthly: R$ 3.571)
+8. Do que é composta a receita? (mensalidade, EA Play, Minecraft e cupons)
+9. Quantos assinantes têm auto renovação?
 
-### Gráficos
-- Receita e Lucro por mês (linha)
-- Receita por categoria (colunas)
-- Receita por região (colunas)
-- Top 5 produtos (barras)
-- Receita por vendedor (barras)
+> Valores sem filtros aplicados. Receita total: **R$ 7.633** · Ticket médio: **R$ 25,87**.
+> Validação: com o filtro *Monthly*, o dashboard reproduz o gabarito do desafio (R$ 3.571 / EA Play R$ 1.350 / Minecraft R$ 1.800).
 
-### Filtros
-Listas suspensas (células amarelas) de **Ano**, **Região** e **Categoria**. Todos os KPIs e gráficos respondem a elas.
+## 🎛️ Dashboard
+- **KPIs:** Receita Total, Assinantes, Ticket Médio, EA Play, Minecraft e Cupons.
+- **Gráficos:** receita por mês, por plano, por tipo de assinatura, composição da receita e assinantes por auto renovação.
+- **Filtros (listas suspensas):** Tipo de assinatura, Plano e Auto renovação.
+- **Planos anuais:** faixa fixa respondendo as perguntas 1 e 2.
 
-## 🗂️ Dados utilizados
-Colunas da aba `Base`: Data, Pedido, Produto, Categoria, Região, Vendedor, Quantidade, Preço Unitário, Custo Unitário, e as colunas calculadas Receita, Custo Total, Lucro, Ano e Mês.
+## 🔁 Como reproduzir
+1. Abra `dashboard_xbox_game_pass.xlsx` no Excel.
+2. Para usar outra base, cole os dados na aba **Bases** (colunas A–M, mesmos cabeçalhos).
+3. Se houver mais linhas, estenda a tabela e os intervalos `Bases!$X$2:$X$296` nas fórmulas da aba **Cálculos**.
+4. Volte ao **Dashboard**; os valores e gráficos atualizam sozinhos.
 
-> ⚠️ **Importante:** a base oficial do desafio (`base.xlsx`) não pôde ser baixada no ambiente em que este projeto foi gerado. Por isso, o arquivo contém **720 pedidos simulados** (2024–2025, produtos Xbox: consoles, acessórios, jogos e assinaturas). Os valores não representam vendas reais.
-
-## 🔁 Como reproduzir / usar sua própria base
-1. Abra `dashboard_vendas_xbox.xlsx` e vá à aba **Base**.
-2. Cole seus dados nas colunas A–I (mantendo os cabeçalhos). Se tiver mais linhas, arraste as fórmulas J–N para baixo e redimensione a tabela `tbVendas`.
-3. Se houver mais linhas que o intervalo atual, ajuste os intervalos nas fórmulas da aba **Calc** (ou use *Localizar e Substituir* no final do intervalo).
-4. Se seus produtos, regiões ou vendedores forem diferentes, edite os nomes nas tabelas da aba **Calc** (colunas E, H, K, R) e as listas dos filtros (Dados › Validação de Dados).
-5. Volte ao **Dashboard**: tudo se atualiza automaticamente (Fórmulas › Calcular Agora, se necessário).
-
-## 🛠️ Recursos do Excel utilizados
-`SUMIFS`, `COUNTIFS`, `INDEX/MATCH`, `LARGE`, Tabelas do Excel, Validação de Dados, gráficos nativos.
-
-## 📜 Licença
-Uso livre para fins educacionais.
+## 🛠️ Recursos utilizados
+`SUMIFS`, `COUNTIFS`, `MIN/MAX`, Tabela do Excel, Validação de Dados, gráficos nativos e a paleta Xbox do template.
